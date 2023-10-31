@@ -1,0 +1,24 @@
+# Starter pipeline
+
+
+trigger:
+- main
+
+# https://aka.ms/yaml
+stages:
+  - stage: InitStage
+    jobs:
+    - job: validate
+      continueOnError: false
+      steps:
+        - 
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'Azure subscription 1(2)(8bf47336-0c8c-46f5-8b73-3174f08ce9f3)'
+    backendAzureRmResourceGroupName: 'RG_DP_ACA'
+    backendAzureRmStorageAccountName: 'storestatefile'
+    backendAzureRmContainerName: 'dev-statefile'
+    backendAzureRmKey: 'test-state'
+
