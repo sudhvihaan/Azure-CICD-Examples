@@ -1,16 +1,18 @@
-# Starter pipeline
-
-
 trigger:
 - main
 
-# https://aka.ms/yaml
 stages:
   - stage: InitStage
     jobs:
     - job: Initialize
       continueOnError: false
       steps:
+        - task: Checkout@v2
+          inputs:
+            repository: 'sudhvihaan/Azure-CICD-Examples'
+            ref: 'main'  # Specify the branch you want to check out
+            clean: true  # Ensure a clean workspace
+
         - task: TerraformTaskV4@4
           inputs:
             provider: 'azurerm'
@@ -21,13 +23,17 @@ stages:
             backendAzureRmContainerName: 'dev-statefile'
             backendAzureRmKey: 'test-state'
 
-stages:
   - stage: validate
     jobs: 
     - job: validate
       steps:
+        - task: Checkout@v2
+          inputs:
+            repository: 'sudhvihaan/Azure-CICD-Examples'
+            ref: 'main'
+            clean: true
+
         - task: TerraformTaskV4@4
           inputs:
             provider: 'azurerm'
             command: 'validate'
-
