@@ -1,6 +1,7 @@
 // This storage is used for storing terraform statefiles only 
 
-resource "azurerm_storage_account" "example" {
+/*
+resource "azurerm_storage_account" "storage_name" {
   name                     = "storestatefile"
   resource_group_name      = azurerm_resource_group.RG.name
   location                 = azurerm_resource_group.RG.location
@@ -12,9 +13,10 @@ resource "azurerm_storage_account" "example" {
   }
 }
 
-resource "azurerm_storage_container" "example" {
+resource "azurerm_storage_container" "storage_container" {
   name                  = "dev-statefile"
   storage_account_name  = azurerm_storage_account.example.name
   container_access_type = "private"
 }
 
+*/
