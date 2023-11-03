@@ -7,12 +7,12 @@ pool:
 
 resources:
   repositories:
-  - repository: yourGitHubRepo
+  - repository: AzureCICDGithumb
     type: github
     endpoint: Github-ServiceConnection
     name: sudhvihaan/Azure-CICD-Examples
-    ref: master
-    path: 04-CICD-PL-Java-SpringBootApp-AzureApps
+    ref: 04-CICD-PL-Java-SpringBootApp-AzureApps
+    #path: 
 
 stages: 
   - stage: 
