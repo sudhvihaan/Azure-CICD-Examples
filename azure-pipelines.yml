@@ -14,5 +14,19 @@ resources:
     ref: master
     path: 04-CICD-PL-Java-SpringBootApp-AzureApps
 
-stages:
-  - na
+stages: 
+  - stage: 
+    displayName: Build Stage
+    jobs:
+      - job: 
+        steps: 
+        - task: Maven@4
+          inputs:
+            mavenPomFile: 'pom.xml'
+            publishJUnitResults: true
+            testResultsFiles: '**/surefire-reports/TEST-*.xml'
+            javaHomeOption: 'JDKVersion'
+            mavenVersionOption: 'Default'
+            mavenAuthenticateFeed: false
+            effectivePomSkip: false
+            sonarQubeRunAnalysis: false
