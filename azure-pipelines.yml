@@ -1,0 +1,18 @@
+trigger:
+- master
+
+pool:
+  name: Self-Hosted-Laptop
+  demands: msbuild
+
+resources:
+  repositories:
+  - repository: yourGitHubRepo
+    type: github
+    endpoint: githubconnection
+    name: sudhvihaan/Azure-CICD-Examples
+    ref: master
+    path: 04-CICD-PL-Java-SpringBootApp-AzureApps
+
+stages:
+  - na
