@@ -9,7 +9,7 @@ resources:
   repositories:
   - repository: yourGitHubRepo
     type: github
-    endpoint: sudhvihaan
+    endpoint: Github-ServiceConnection
     name: sudhvihaan/Azure-CICD-Examples
     ref: master
     path: 04-CICD-PL-Java-SpringBootApp-AzureApps
