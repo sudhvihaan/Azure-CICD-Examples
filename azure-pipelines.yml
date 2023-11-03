@@ -11,7 +11,7 @@ resources:
     type: github
     endpoint: Github-ServiceConnection
     name: sudhvihaan/Azure-CICD-Examples
-    ref: 04-CICD-PL-Java-SpringBootApp-AzureApps
+    ref: Github-ServiceConnection/04-CICD-PL-Java-SpringBootApp-AzureApps
     #path: 
 
 stages: 
