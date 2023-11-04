@@ -13,7 +13,7 @@ resources:
     type: github
     endpoint: Github-ServiceConnection
     name: sudhvihaan/Azure-CICD-Examples
-    ref: master
+
 
 steps:
 - task: Maven@4
