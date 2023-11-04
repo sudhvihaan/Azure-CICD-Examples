@@ -22,4 +22,13 @@ steps:
     cd Azure-CICD-Examples/03-CICD-PL-Terraform-res-deploy
   displayName: 'Clone and navigate to subdirectory'
 
-  
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'  # Path to your project's POM file
+    goals: 'clean package'  # Specify the Maven goals, e.g., clean, package, etc.
+    publishJUnitResults: true  # If you have JUnit tests, set this to true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: 'path/to/your/artifacts'  # Path to your built JAR or WAR file
+    artifactName: 'MyJavaApp'  # Give your artifact a name
