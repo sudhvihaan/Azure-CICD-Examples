@@ -28,7 +28,9 @@ steps:
     goals: 'clean package -Dmaven.test.skip=true'  # Specify the Maven goals, e.g., clean, package, etc.
     publishJUnitResults: true  # If you have JUnit tests, set this to true
 
+
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '/p:OutDir=$(Build.ArtifactStagingDirectory)'  # Path to your built JAR or WAR file
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'  # Path to your built JAR or WAR file
     artifactName: 'MyJavaApp'  # Give your artifact a name
+
