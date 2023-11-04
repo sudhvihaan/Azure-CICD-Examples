@@ -16,6 +16,6 @@ resources:
     ref: master
 
 steps:
-  - task:
-    name: 
-    displayName: hello 
+- task: Maven@4
+  name: asdasd
+  
