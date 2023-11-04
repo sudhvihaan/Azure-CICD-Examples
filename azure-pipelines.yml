@@ -28,9 +28,20 @@ steps:
     goals: 'clean package -Dmaven.test.skip=true'  # Specify the Maven goals, e.g., clean, package, etc.
     publishJUnitResults: true  # If you have JUnit tests, set this to true
 
-- script: |
+
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 
+      # Write your PowerShell commands here.
+      
+      Write-Host "Hello World"
+
+
+- script:
     ls $(Build.ArtifactStagingDirectory)
-  displayName: 'List Artifact Directory'
+  
   
 - task: PublishBuildArtifacts@1
   inputs:
