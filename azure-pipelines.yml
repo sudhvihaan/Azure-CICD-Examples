@@ -39,8 +39,9 @@ steps:
       Write-Host "Hello World"
 
 
-- script:
-    ls $(Build.ArtifactStagingDirectory)
+- script: 
+    dir $(Build.ArtifactStagingDirectory)
+  displayName: 'List Artifact Directory'
   
   
 - task: PublishBuildArtifacts@1
