@@ -30,5 +30,5 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: 'path/to/your/artifacts'  # Path to your built JAR or WAR file
+    pathtoPublish: '/p:OutDir=$(Build.ArtifactStagingDirectory)'  # Path to your built JAR or WAR file
     artifactName: 'MyJavaApp'  # Give your artifact a name
