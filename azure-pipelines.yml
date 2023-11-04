@@ -24,10 +24,10 @@ stages:
             git clone https://github.com/sudhvihaan/Azure-CICD-Examples.git
             # Now, navigate to the specific subdirectory
             cd Azure-CICD-Examples/04-CICD-PL-Java-SpringBootApp-AzureApps
-          displayName: 'DM: Clone Git and navigate to subdirectory'
+          displayName: 'DM- Clone Git and navigate to subdirectory'
 
         - task: Maven@3
-          displayName:  'DM: Build Java Application'
+          displayName:  'DM- Build Java Application'
           inputs:
             mavenPomFile: '04-CICD-PL-Java-SpringBootApp-AzureApps/gs-spring-boot-master/gs-spring-boot-master/app/pom.xml'  # Path to your project's POM file
             goals: 'package -Dmaven.test.skip=true'  # Specify the Maven goals, e.g., clean, package, etc.
@@ -47,11 +47,11 @@ stages:
 
         - script: 
             dir $(Build.ArtifactStagingDirectory)
-          displayName: 'DM: Display Artifact Directory'
+          displayName: 'DM- Display Artifact Directory'
           
           
         - task: PublishBuildArtifacts@1
-          displayName: 'DM: Publish the build to Artifact'
+          displayName: 'DM- Publish the build to Artifact'
           inputs:
             pathtoPublish: '$(Build.ArtifactStagingDirectory)'  # Path to your built JAR or WAR file
             artifactName: 'MyJavaApp'  # Give your artifact a name
