@@ -14,8 +14,12 @@ resources:
     endpoint: Github-ServiceConnection
     name: sudhvihaan/Azure-CICD-Examples
 
-
+ 
 steps:
-- task: Maven@4
-  name: asdasd
+- script: |
+    git clone https://github.com/sudhvihaan/Azure-CICD-Examples.git
+    # Now, navigate to the specific subdirectory
+    cd Azure-CICD-Examples/03-CICD-PL-Terraform-res-deploy
+  displayName: 'Clone and navigate to subdirectory'
+
   
