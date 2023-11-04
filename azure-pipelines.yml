@@ -5,54 +5,44 @@ pool:
   name: Self-Hosted-Laptop
   demands: maven
 
-
-
 resources:
   repositories:
   - repository: yourGitHubRepo
     type: github
     endpoint: Github-ServiceConnection
     name: sudhvihaan/Azure-CICD-Examples
- 
+
 stages:
-  - stage: CI
-    jobs:
-      - job: Job-Build
- 
-        steps:
-        - script: |
-            git clone https://github.com/sudhvihaan/Azure-CICD-Examples.git
-            # Now, navigate to the specific subdirectory
-            cd Azure-CICD-Examples/04-CICD-PL-Java-SpringBootApp-AzureApps
-          displayName: 'DM- Clone Git and navigate to subdirectory'
+- stage: CI
+  jobs:
+  - job: Job-Build
+    steps:
+    - script: |
+        git clone https://github.com/sudhvihaan/Azure-CICD-Examples.git
+        # Now, navigate to the specific subdirectory
+        cd Azure-CICD-Examples/04-CICD-PL-Java-SpringBootApp-AzureApps
+      displayName: 'DM- Clone Git and navigate to subdirectory'
 
-        - task: Maven@3
-          displayName:  'DM- Build Java Application'
-          inputs:
-            mavenPomFile: '04-CICD-PL-Java-SpringBootApp-AzureApps/gs-spring-boot-master/gs-spring-boot-master/app/pom.xml'  # Path to your project's POM file
-            goals: 'package -Dmaven.test.skip=true'  # Specify the Maven goals, e.g., clean, package, etc.
-            publishJUnitResults: true  # If you have JUnit tests, set this to true
-            
-            
+    - task: Maven@3
+      displayName: 'DM- Build Java Application'
+      inputs:
+        mavenPomFile: '04-CICD-PL-Java-SpringBootApp-AzureApps/gs-spring-boot-master/gs-spring-boot-master/app/pom.xml'  # Path to your project's POM file
+        goals: 'package -Dmaven.test.skip=true'  # Specify the Maven goals, e.g., clean, package, etc.
+        publishJUnitResults: false  # If you don't have JUnit tests, set this to false
 
+    - task: CopyFiles@2
+      displayName: 'DM- Copy to ArtifacDirectory'
+      inputs:
+        SourceFolder: '$(Agent.BuildDirectory)/s/04-CICD-PL-Java-SpringBootApp-AzureApps/gs-spring-boot-master/gs-spring-boot-master/app/target'  # Replace with the actual path
+        Contents: '**'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-        - task: CopyFiles@2
-          displayName: 'DM: Copy to ArtifacDirectory'
-          inputs:
-            SourceFolder: '$(Agent.BuildDirectory)/s/04-CICD-PL-Java-SpringBootApp-AzureApps/gs-spring-boot-master/gs-spring-boot-master/app/target'  # Replace with the actual path
-            Contents: '**'
-            TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    - script: 
+        dir $(Build.ArtifactStagingDirectory)
+      displayName: 'DM- Display Artifact Directory'
 
-
-
-        - script: 
-            dir $(Build.ArtifactStagingDirectory)
-          displayName: 'DM- Display Artifact Directory'
-          
-          
-        - task: PublishBuildArtifacts@1
-          displayName: 'DM- Publish the build to Artifact'
-          inputs:
-            pathtoPublish: '$(Build.ArtifactStagingDirectory)'  # Path to your built JAR or WAR file
-            artifactName: 'MyJavaApp'  # Give your artifact a name
-
+    - task: PublishBuildArtifacts@1
+      displayName: 'DM- Publish the build to Artifact'
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)'  # Path to your built JAR or WAR file
+        artifactName: 'MyJavaApp'  # Give your artifact a name
