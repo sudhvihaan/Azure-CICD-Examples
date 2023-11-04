@@ -5,28 +5,31 @@ pool:
   name: Self-Hosted-Laptop
   demands: msbuild
 
+
+
 resources:
   repositories:
-  - repository: AzureCICDGithumb
+  - repository: yourGitHubRepo
     type: github
     endpoint: Github-ServiceConnection
     name: sudhvihaan/Azure-CICD-Examples
-    #ref: Github-ServiceConnection/04-CICD-PL-Java-SpringBootApp-AzureApps
-    #path: 
+    ref: master
 
-stages: 
-  - stage: 
-    displayName: Build Stage
-    jobs:
-      - job: 
-        steps: 
-        - task: Maven@4
-          inputs:
-            mavenPomFile: 'pom.xml'
-            publishJUnitResults: true
-            testResultsFiles: '**/surefire-reports/TEST-*.xml'
-            javaHomeOption: 'JDKVersion'
-            mavenVersionOption: 'Default'
-            mavenAuthenticateFeed: false
-            effectivePomSkip: false
-            sonarQubeRunAnalysis: false
+
+jobs:
+- job: Build
+  steps:
+  - checkout: yourGitHubRepo  # This refers to the parent repository
+    clean: true  # Clean any existing files
+
+  - script: echo This is a build step for the parent repository
+    displayName: 'Build Parent Repository'
+
+  - checkout: yourGitHubRepo  # Checkout the parent repository again
+    clean: false  # Do not clean this time
+
+  - script: |
+      echo This is a script that works with the parent repository
+      echo But now we can reference the child repository path
+      ls sudhvihaan/Azure-CICD-Examples/04-CICD-PL-Java-SpringBootApp-AzureApps
+    displayName: 'List Contents of Child Repository'
