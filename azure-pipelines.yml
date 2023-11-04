@@ -30,14 +30,12 @@ steps:
     
 
 
-
-- task: PowerShell@2
+- task: CopyFiles@2
   inputs:
-    targetType: 'inline'
-    script: 
-      # Write your PowerShell commands here.
-      
-      Write-Host "Hello World"
+    SourceFolder: 'path/to/your/artifacts'  # Replace with the actual path
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
 
 
 - script: 
