@@ -24,7 +24,7 @@ steps:
 
 - task: Maven@3
   inputs:
-    mavenPomFile: 'pom.xml'  # Path to your project's POM file
+    mavenPomFile: '04-CICD-PL-Java-SpringBootApp-AzureApps/gs-spring-boot-master/gs-spring-boot-master/app/pom.xml'  # Path to your project's POM file
     goals: 'clean package'  # Specify the Maven goals, e.g., clean, package, etc.
     publishJUnitResults: true  # If you have JUnit tests, set this to true
 
