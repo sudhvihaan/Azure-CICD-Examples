@@ -32,7 +32,7 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: 'path/to/your/artifacts'  # Replace with the actual path
+    SourceFolder: '$(Agent.BuildDirectory)/s/04-CICD-PL-Java-SpringBootApp-AzureApps/gs-spring-boot-master/gs-spring-boot-master/app/target'  # Replace with the actual path
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
