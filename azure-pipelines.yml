@@ -64,7 +64,7 @@ stages:
           command: 'init'
           workingDirectory: '$(Build.SourcesDirectory)/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform'
           backendServiceArm: 'service-connection-for-CICD-java-Spring-Boot'
-          backendAzureRmResourceGroupName: 'RG_JAVA_APP'
+          backendAzureRmResourceGroupName: 'AKS-HEMLDemo'
           backendAzureRmStorageAccountName: 'storageac6674'
           backendAzureRmContainerName: 'storestafefile'
           backendAzureRmKey: 'statefile.tfstate'
