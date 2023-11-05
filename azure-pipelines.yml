@@ -61,6 +61,7 @@ stages:
         inputs:
           provider: 'azurerm'
           command: 'init'
+          workingDirectory: '$(Build.SourcesDirectory)/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform'
           backendServiceArm: 'service-connection-for-CICD-java-Spring-Boot'
           backendAzureRmResourceGroupName: 'RG_JAVA_APP'
           backendAzureRmStorageAccountName: 'storageac6674'
