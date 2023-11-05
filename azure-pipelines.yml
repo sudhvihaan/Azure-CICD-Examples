@@ -69,6 +69,12 @@ stages:
           backendAzureRmContainerName: 'storestafefile'
           backendAzureRmKey: 'statefile.tfstate'
 
+      - script: |
+          terraform import azurerm_resource_group.RG /subscriptions/8bf47336-0c8c-46f5-8b73-3174f08ce9f3/resourceGroups/RG_JAVA_APP
+          displayName: 'Import Existing Resource'
+          workingDirectory: '$(Build.SourcesDirectory)/path-to-your-terraform-config'
+
+
       - task: TerraformTaskV4@4
         displayName: 'DM-Terraform Validate'
         inputs:
