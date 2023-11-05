@@ -58,6 +58,7 @@ stages:
         displayName: 'DM- Clone Git and navigate to Terraform Directory'
 
       - task: TerraformTaskV4@4
+        displayName: 'DM-Terraform Init'
         inputs:
           provider: 'azurerm'
           command: 'init'
@@ -68,10 +69,10 @@ stages:
           backendAzureRmContainerName: 'storestafefile'
           backendAzureRmKey: 'statefile.tfstate'
 
-
-
       - task: TerraformTaskV4@4
+        displayName: 'DM-Terraform Validate'
         inputs:
           provider: 'azurerm'
-          command: 'plan'
-          environmentServiceNameAzureRM: 'service-connection-for-CICD-java-Spring-Boot'
+          command: 'validate'
+          workingDirectory: '$(Build.SourcesDirectory)/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform'
+
