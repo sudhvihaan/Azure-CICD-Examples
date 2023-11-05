@@ -31,7 +31,7 @@ stages:
         publishJUnitResults: false  # If you don't have JUnit tests, set this to false
 
     - task: CopyFiles@2
-      displayName: 'DM- Copy to ArtifacDirectory'
+      displayName: 'DM- Copy to ArtifactDirectory'
       inputs:
         SourceFolder: '$(Agent.BuildDirectory)/s/04-CICD-PL-Java-SpringBootApp-AzureApps/gs-spring-boot-master/gs-spring-boot-master/app/target'  # Replace with the actual path
         Contents: '**'
@@ -72,8 +72,7 @@ stages:
       - script: |
           terraform import azurerm_resource_group.RG /subscriptions/8bf47336-0c8c-46f5-8b73-3174f08ce9f3/resourceGroups/RG_JAVA_APP
           displayName: 'Import Existing Resource'
-          workingDirectory: '$(Build.SourcesDirectory)/path-to-your-terraform-config'
-
+          workingDirectory: '$(Build.SourcesDirectory)/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform'
 
       - task: TerraformTaskV4@4
         displayName: 'DM-Terraform Validate'
@@ -83,7 +82,7 @@ stages:
           workingDirectory: '$(Build.SourcesDirectory)/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform'
 
       - task: TerraformTaskV4@4
-        displayName: 'DM-Terraform plan'
+        displayName: 'DM-Terraform Plan'
         inputs:
           provider: 'azurerm'
           command: 'plan'
@@ -91,7 +90,7 @@ stages:
           workingDirectory: '$(Build.SourcesDirectory)/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform'
 
       - task: TerraformTaskV4@4
-        displayName: 'DM-Terraform Aprove'
+        displayName: 'DM-Terraform Apply'
         inputs:
           provider: 'azurerm'
           command: 'apply'
