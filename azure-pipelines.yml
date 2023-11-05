@@ -47,7 +47,7 @@ stages:
         pathtoPublish: '$(Build.ArtifactStagingDirectory)'  # Path to your built JAR or WAR file
         artifactName: 'MyJavaApp'  # Give your artifact a name
 
-- stage: 
+- stage:
   jobs:
     - job: Deploy-Azure-App
       steps:
@@ -56,10 +56,13 @@ stages:
           # Now, navigate to the specific subdirectory
           cd Azure-CICD-Examples/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform
         displayName: 'DM- Clone Git and navigate to Terraform Directory'
-    
-      - task: PublishBuildArtifacts@1
-        displayName: 'DM- Publish the build to Artifact'
+
+      - task: TerraformTaskV4@4
         inputs:
-          pathtoPublish: '$(Build.ArtifactStagingDirectory)'  # Path to your built JAR or WAR file
-          artifactName: 'MyJavaApp'  # Give your artifact a name
-      
+          provider: 'azurerm'
+          command: 'init'
+          backendServiceArm: 'service-connection-for-CICD-java-Spring-Boot'
+          backendAzureRmResourceGroupName: 'RG_JAVA_APP'
+          backendAzureRmStorageAccountName: 'storageac6674'
+          backendAzureRmContainerName: 'storestafefile'
+          backendAzureRmKey: 'statefile'
