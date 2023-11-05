@@ -76,3 +76,19 @@ stages:
           command: 'validate'
           workingDirectory: '$(Build.SourcesDirectory)/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform'
 
+      - task: TerraformTaskV4@4
+        displayName: 'DM-Terraform plan'
+        inputs:
+          provider: 'azurerm'
+          command: 'plan'
+          workingDirectory: '$(Build.SourcesDirectory)/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform'
+
+      - task: TerraformTaskV4@4
+        displayName: 'DM-Terraform Aprove'
+        inputs:
+          provider: 'azurerm'
+          command: 'apply'
+          commandOptions: '--auto-approve'
+          workingDirectory: '$(Build.SourcesDirectory)/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform'
+
+ 
