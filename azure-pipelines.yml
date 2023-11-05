@@ -66,3 +66,11 @@ stages:
           backendAzureRmStorageAccountName: 'storageac6674'
           backendAzureRmContainerName: 'storestafefile'
           backendAzureRmKey: 'statefile'
+
+
+
+      - task: TerraformTaskV4@4
+        inputs:
+          provider: 'azurerm'
+          command: 'plan'
+          environmentServiceNameAzureRM: 'service-connection-for-CICD-java-Spring-Boot'
