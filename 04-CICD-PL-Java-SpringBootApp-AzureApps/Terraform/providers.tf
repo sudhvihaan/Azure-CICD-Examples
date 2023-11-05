@@ -16,6 +16,11 @@ terraform {
     key                   = "terraformd-dev.tfstate"        # The name of the state file within the container
   }
 }*/
+
+terraform {
+│   backend "local" {}
+│ }
+
 }
 
 provider "azurerm" {
