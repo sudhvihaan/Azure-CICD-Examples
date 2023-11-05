@@ -9,7 +9,7 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name = "RG_JAVA_APP"
+    resource_group_name = "AKS-HEMLDemo"
     storage_account_name = "storageac6674"
     container_name = "storestafefile"
     key = "statefile.tfstate"
