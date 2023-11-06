@@ -99,7 +99,7 @@ stages:
       displayName: 'Azure App Service Deploy: javapipeline'
       inputs:
         azureSubscription: 'service-connection-for-CICD-java-Spring-Boot'
-        appType: functionApp
+        appType: webApp
         WebAppName: azuretestcicd76757-asp
         packageForLinux: '$(Build.ArtifactStagingDirectory)'
         enableCustomDeployment: true  
