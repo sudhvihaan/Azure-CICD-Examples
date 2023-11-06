@@ -103,7 +103,7 @@ stages:
       inputs:
         azureSubscription: 'service-connection-for-CICD-java-Spring-Boot'
         WebAppName: 'azuretestcicd76757-asp'
-        package: '$(System.DefaultWorkingDirectory)/s/gs-spring-boot-0.1.0.jar'
+        package: '$(Build.ArtifactStagingDirectory)/s/gs-spring-boot-0.1.0.jar'
         enableCustomDeployment: true
         TakeAppOfflineFlag: false
         RemoveAdditionalFilesFlag: true
