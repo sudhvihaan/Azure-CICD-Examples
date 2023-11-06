@@ -95,7 +95,7 @@ stages:
         pathtoPublish: '$(Build.ArtifactStagingDirectory)'  # Path to your built JAR or WAR file
         artifactName: 'MyJavaApp'  # Give your artifact a name
 
-    steps:
+
     - task: AzureRmWebAppDeployment@4
       displayName: 'Azure App Service Deploy: azuretestcicd76757-asp'
       inputs:
