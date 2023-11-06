@@ -13,7 +13,7 @@ resources:
     name: sudhvihaan/Azure-CICD-Examples
 
 stages:
-- stage: CI
+- stage: CI-Build
   jobs:
   - job: JobBuild
     steps:
@@ -47,7 +47,7 @@ stages:
         pathtoPublish: '$(Build.ArtifactStagingDirectory)'  # Path to your built JAR or WAR file
         artifactName: 'MyJavaApp'  # Give your artifact a name
 
-- stage: 
+- stage: CI-Terraform
   jobs:
     - job: DeployAzureApp
       steps:
@@ -96,7 +96,7 @@ stages:
 
 
 
-- stage:
+- stage: CI-Terraform-Destroy
   jobs:
     - job: DeleteAzureApps
       steps:
