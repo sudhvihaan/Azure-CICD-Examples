@@ -209,20 +209,15 @@ stages:
 
 
 
-
-- stage: CDDeployJar
-  jobs:
-    - job: DeployJarFile
-      steps:
-      - task: DownloadBuildArtifacts@0
-        inputs:
+    - task: DownloadBuildArtifacts@0
+      inputs:
           buildType: 'current'
           downloadType: 'single'
           artifactName: 'MyJavaApp'
           downloadPath: '$(System.DefaultWorkingDirectory)/MyJavaApp'
 
-      - task: PublishBuildArtifacts@1
-        inputs:
+    - task: PublishBuildArtifacts@1
+      inputs:
           pathtoPublish: '$(System.DefaultWorkingDirectory)/MyJavaApp'
           artifactName: 'DeployedJavaApp'
 
