@@ -49,6 +49,17 @@ stages:
           command: 'plan'
           environmentServiceNameAzureRM: 'service-connection-for-CICD-java-Spring-Boot' 
           workingDirectory: '$(Build.SourcesDirectory)/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform'
+        
+
+      - task: TerraformTaskV4@4
+        displayName: 'DM-Terraform Apply'
+        inputs:
+          provider: 'azurerm'
+          command: 'apply'
+          commandOptions: '--auto-approve'
+          environmentServiceNameAzureRM: 'service-connection-for-CICD-java-Spring-Boot'
+          workingDirectory: '$(Build.SourcesDirectory)/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform'
+
 
 - stage: CIApplicationBuild
   jobs:
