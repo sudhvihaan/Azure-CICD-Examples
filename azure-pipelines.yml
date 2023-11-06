@@ -48,7 +48,7 @@ stages:
         artifactName: 'MyJavaApp'  # Give your artifact a name
 
 - stage: 
-  name: Az Resource Provisioning
+  name: Az-Resource-Provisioning
   jobs:
     - job: DeployAzureApp
       steps:
