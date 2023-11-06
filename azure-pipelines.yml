@@ -13,7 +13,7 @@ resources:
     name: sudhvihaan/Azure-CICD-Examples
 
 stages:  
-- stage: CI Azure Resource Provisioning
+- stage: CIAzureResourceProvisioning
   jobs:
     - job: DeployAzureApp
       steps:
@@ -67,7 +67,7 @@ stages:
 
 
 
-- stage: CI Application Build
+- stage: CIApplicationBuild
   jobs:
   - job: JobBuild
     steps:
