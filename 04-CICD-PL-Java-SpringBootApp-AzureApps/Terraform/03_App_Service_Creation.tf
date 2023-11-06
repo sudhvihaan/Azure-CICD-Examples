@@ -19,9 +19,9 @@ resource "azurerm_app_service" "app_service" {
 
   site_config {
    // always_on        = false
-   // java_version           = "1.8"
+    java_version           = "8"
     java_container         = "TOMCAT"
-    java_container_version = "11"
+    java_container_version = "10"
   }
 
   app_settings = {
