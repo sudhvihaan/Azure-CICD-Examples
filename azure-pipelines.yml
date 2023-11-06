@@ -47,7 +47,8 @@ stages:
         pathtoPublish: '$(Build.ArtifactStagingDirectory)'  # Path to your built JAR or WAR file
         artifactName: 'MyJavaApp'  # Give your artifact a name
 
-- stage: CI-Terraform
+- stage: 
+  name: 'Az-Resource-Provisioning'
   jobs:
     - job: DeployAzureApp
       steps:
@@ -96,7 +97,8 @@ stages:
 
 
 
-- stage: CI-Terraform-Destroy
+- stage: 
+  name: 'CI-Terraform-Destroy'
   jobs:
     - job: DeleteAzureApps
       steps:
