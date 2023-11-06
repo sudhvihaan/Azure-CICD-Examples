@@ -67,7 +67,7 @@ stages:
 
 
 
-- stage: CI_Application_Build
+- stage: CI Application Build
   jobs:
   - job: JobBuild
     steps:
