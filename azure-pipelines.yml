@@ -96,16 +96,16 @@ stages:
         artifactName: 'MyJavaApp'  # Give your artifact a name
 
 
+
+
     - task: AzureRmWebAppDeployment@4
-      displayName: 'Azure App Service Deploy: azuretestcicd76757-asp'
+      displayName: 'Azure App Service Deploy'
       inputs:
         azureSubscription: 'service-connection-for-CICD-java-Spring-Boot'
         WebAppName: 'azuretestcicd76757-asp'
-        ScriptType: 'Inline Script'
-        InlineScript: 'java -jar /home/site/wwwroot/gs-spring-boot-0.1.0.jar --server.port=80'
+        package: '$(System.DefaultWorkingDirectory)/s/04-CICD-PL-Java-SpringBootApp-AzureApps/gs-spring-boot-0.1.0.jar'
         enableCustomDeployment: true
         TakeAppOfflineFlag: false
         RemoveAdditionalFilesFlag: true
-
 
 
