@@ -95,27 +95,17 @@ stages:
         pathtoPublish: '$(Build.ArtifactStagingDirectory)'  # Path to your built JAR or WAR file
         artifactName: 'MyJavaApp'  # Give your artifact a name
 
+    steps:
     - task: AzureRmWebAppDeployment@4
-      displayName: 'Azure App Service Deploy: javapipeline'
+      displayName: 'Azure App Service Deploy: azuretestcicd76757-asp'
       inputs:
         azureSubscription: 'service-connection-for-CICD-java-Spring-Boot'
-        appType: webApp
-        WebAppName: azuretestcicd76757-asp
-        
-        #packageForLinux: '$(Build.ArtifactStagingDirectory)'
-        enableCustomDeployment: true  
+        WebAppName: 'azuretestcicd76757-asp'
+        ScriptType: 'Inline Script'
+        InlineScript: 'java -jar /home/site/wwwroot/gs-spring-boot-0.1.0.jar --server.port=80'
+        enableCustomDeployment: true
         TakeAppOfflineFlag: false
-        ExcludeFilesFromAppDataFlag: false
-        RenameFilesFlag: false
-
-    - script: |
-        # Navigate to the directory where your JAR file is deployed
-        cd /home/site/wwwroot
-
-        # Run the JAR file with custom parameters
-        java -jar gs-spring-boot-0.1.0.jar --server.port=80
-      displayName: 'Run JAR file'
-      workingDirectory: '/home/site/wwwroot'
+        RemoveAdditionalFilesFlag: true
 
 
 
