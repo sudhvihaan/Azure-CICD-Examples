@@ -21,9 +21,9 @@ resource "azurerm_app_service" "app_service" {
    // always_on        = false
     java_version           = "11"
     java_container         = "TOMCAT"
-    java_container_version = "1.8"
+    java_container_version = "9.0"
   }
-
+ 
   app_settings = {
     "SOME_KEY" = "kevalueone"
   }
