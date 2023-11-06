@@ -105,5 +105,6 @@ stages:
         inputs:
           provider: 'azurerm'
           command: 'destroy'
+          commandOptions: '--auto-approve'
           environmentServiceNameAzureRM: 'service-connection-for-CICD-java-Spring-Boot'
         
