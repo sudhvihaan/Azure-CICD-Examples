@@ -47,7 +47,7 @@ stages:
         pathtoPublish: '$(Build.ArtifactStagingDirectory)'  # Path to your built JAR or WAR file
         artifactName: 'MyJavaApp'  # Give your artifact a name
 
-- stage:
+- stage: 
   jobs:
     - job: DeployAzureApp
       steps:
