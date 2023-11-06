@@ -66,7 +66,7 @@ stages:
 
 
 
-stages:
+
 - stage: CI-Application-Build
   jobs:
   - job: JobBuild
