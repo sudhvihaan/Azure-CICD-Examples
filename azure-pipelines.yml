@@ -24,3 +24,16 @@ stages:
           # Now, navigate to the specific subdirectory
           cd Azure-CICD-Examples/05-CICDPL-Java-SprintBootApp2-AzureWebApps/Terraform
           
+
+
+      - task: TerraformTaskV4@4
+        displayName: 'DM-Terraform Init'
+        inputs:
+          provider: 'azurerm'
+          command: 'init'
+          workingDirectory: '$(Build.SourcesDirectory)/05-CICDPL-Java-SprintBootApp2-AzureWebApps/Terraform'
+          backendServiceArm: 'service-connection-for-CICD-java-Spring-Boot'
+          backendAzureRmResourceGroupName: 'AKS-HEMLDemo'
+          backendAzureRmStorageAccountName: 'storageac6674'
+          backendAzureRmContainerName: 'storestafefile'
+          backendAzureRmKey: 'state-2nd-JSB.tfstate'
