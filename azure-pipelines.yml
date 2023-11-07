@@ -9,7 +9,7 @@ resources:
   repositories:
   - repository: yourGitHubRepo
     type: github
-    endpoint: Github-ServiceConnection
+    endpoint: git-service-connection
     name: sudhvihaan/Azure-CICD-Examples
 
 
