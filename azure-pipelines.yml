@@ -17,9 +17,10 @@ stages:
 - stage: Stage_CI_Azure_ResourceProvisioning_via_Terraform
   jobs:
     - job: DeployAzureApp
+      displayName: 'DM- Clone Git and navigate to Terraform Directory'
       steps:
       - script: |
           git clone https://github.com/sudhvihaan/Azure-CICD-Examples.git
           # Now, navigate to the specific subdirectory
           cd Azure-CICD-Examples/05-CICDPL-Java-SprintBootApp2-AzureWebApps/Terraform
-          displayName: 'DM- Clone Git and navigate to Terraform Directory'
+          
