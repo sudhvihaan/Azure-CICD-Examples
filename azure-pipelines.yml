@@ -102,17 +102,3 @@ stages:
 
 
 
-- stage: Stage_CD_DeployApp_To_AzureWebApp
-  jobs:
-  - job: JobBuild
-    steps:
-    - task: AzureRmWebAppDeployment@4
-      displayName: 'Azure App Service Deploy'
-      inputs:
-        azureSubscription: 'Service-Connection-To-Koushik-ProjectCICD-2nd'
-        WebAppName: 'azuretestcicd76757-asp'
-        package: '$(Build.ArtifactStagingDirectory)'
-        enableCustomDeployment: true
-        TakeAppOfflineFlag: false
-        RemoveAdditionalFilesFlag: true
-        appCommandLine: 'java -jar /home/site/wwwroot/Hello-world-0.0.1-SANPSHOT.jar --server.port=80'
