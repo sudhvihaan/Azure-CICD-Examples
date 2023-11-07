@@ -32,8 +32,10 @@ stages:
           provider: 'azurerm'
           command: 'init'
           workingDirectory: '$(Build.SourcesDirectory)/05-CICDPL-Java-SprintBootApp2-AzureWebApps/Terraform'
-          backendServiceArm: 'service-connection-for-CICD-java-Spring-Boot'
+          backendServiceArm: 'Service-Connection-To-Koushik-ProjectCICD-2nd'
           backendAzureRmResourceGroupName: 'AKS-HEMLDemo'
           backendAzureRmStorageAccountName: 'storageac6674'
           backendAzureRmContainerName: 'storestafefile'
           backendAzureRmKey: 'state-2nd-JSB.tfstate'
+
+ 
