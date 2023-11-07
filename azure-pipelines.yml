@@ -28,7 +28,7 @@ stages:
         inputs:
           provider: 'azurerm'
           command: 'init'
-          workingDirectory: '$(Build.SourcesDirectory)/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform'
+          workingDirectory: '$(Build.SourcesDirectory)/05-CICDPL-Java-SprintBootApp2-AzureWebApps/Terraform'
           backendServiceArm: 'service-connection-for-CICD-java-Spring-Boot'
           backendAzureRmResourceGroupName: 'AKS-HEMLDemo'
           backendAzureRmStorageAccountName: 'storageac6674'
@@ -40,7 +40,7 @@ stages:
         inputs:
           provider: 'azurerm'
           command: 'validate'
-          workingDirectory: '$(Build.SourcesDirectory)/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform'
+          workingDirectory: '$(Build.SourcesDirectory)/05-CICDPL-Java-SprintBootApp2-AzureWebApps/Terraform'
 
       - task: TerraformTaskV4@4
         displayName: 'DM-Terraform Plan'
@@ -48,7 +48,7 @@ stages:
           provider: 'azurerm'
           command: 'plan'
           environmentServiceNameAzureRM: 'service-connection-for-CICD-java-Spring-Boot' 
-          workingDirectory: '$(Build.SourcesDirectory)/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform'
+          workingDirectory: '$(Build.SourcesDirectory)/05-CICDPL-Java-SprintBootApp2-AzureWebApps/Terraform'
         
 
       - task: TerraformTaskV4@4
@@ -58,7 +58,7 @@ stages:
           command: 'apply'
           commandOptions: '--auto-approve'
           environmentServiceNameAzureRM: 'service-connection-for-CICD-java-Spring-Boot'
-          workingDirectory: '$(Build.SourcesDirectory)/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform'
+          workingDirectory: '$(Build.SourcesDirectory)/05-CICDPL-Java-SprintBootApp2-AzureWebApps/Terraform'
 
 
 - stage: Stage_CI_Build_App_Maven
