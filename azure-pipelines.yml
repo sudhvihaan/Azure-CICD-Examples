@@ -108,7 +108,7 @@ stages:
     - task: AzureRmWebAppDeployment@4
       displayName: 'Azure App Service Deploy'
       inputs:
-        azureSubscription: 'service-connection-for-CICD-java-Spring-Boot'
+        azureSubscription: 'Service-Connection-To-Koushik-ProjectCICD-2nd'
         WebAppName: 'azuretestcicd76757-asp'
         package: '$(Build.ArtifactStagingDirectory)'
         enableCustomDeployment: true
