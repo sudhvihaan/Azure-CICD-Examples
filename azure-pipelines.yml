@@ -20,7 +20,7 @@ stages:
       - script: |
           git clone https://github.com/sudhvihaan/Azure-CICD-Examples.git
           # Now, navigate to the specific subdirectory
-          cd Azure-CICD-Examples/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform
+          cd Azure-CICD-Examples/05-CICDPL-Java-SprintBootApp2-AzureWebApps/Terraform
         displayName: 'DM- Clone Git and navigate to Terraform Directory'
 
       - task: TerraformTaskV4@4
@@ -68,7 +68,7 @@ stages:
     - script: |
         git clone https://github.com/sudhvihaan/Azure-CICD-Examples.git
         # Now, navigate to the specific subdirectory
-        cd Azure-CICD-Examples/04-CICD-PL-Java-SpringBootApp-AzureApps
+        cd Azure-CICD-Examples/05-CICDPL-Java-SprintBootApp2-AzureWebApps
       displayName: 'DM- Clone Git and navigate to subdirectory'
 
     - task: Maven@3
