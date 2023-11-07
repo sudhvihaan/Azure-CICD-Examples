@@ -13,7 +13,7 @@ resources:
     name: sudhvihaan/Azure-CICD-Examples
 
 stages:
-- stage: Stage CI Azure ResourceProvisioning
+- stage: Stage_CI_Azure_ResourceProvisioning_via_Terraform
   jobs:
     - job: DeployAzureApp
       steps:
@@ -61,7 +61,7 @@ stages:
           workingDirectory: '$(Build.SourcesDirectory)/04-CICD-PL-Java-SpringBootApp-AzureApps/Terraform'
 
 
-- stage: CIApplicationBuild
+- stage: Stage_CI_Build_App_Maven
   jobs:
   - job: JobBuild
     steps:
@@ -95,9 +95,10 @@ stages:
         pathtoPublish: '$(Build.ArtifactStagingDirectory)'  # Path to your built JAR or WAR file
         artifactName: 'MyJavaApp'  # Give your artifact a name
 
-
-
-
+- stage: Stage_CD_DeployApp_To_AzureWebApp
+  jobs:
+  - job: JobBuild
+    steps:
     - task: AzureRmWebAppDeployment@4
       displayName: 'Azure App Service Deploy'
       inputs:
