@@ -78,7 +78,8 @@ stages:
     - task: Maven@3
       displayName: 'DM- Build Java Application'
       inputs:
-        mavenPomFile: '05-CICDPL-Java-SprintBootApp2-AzureWebApps/Java-Spring-Boot-HelloWorld'  # Path to your project's POM file
+      
+        mavenPomFile: '05-CICDPL-Java-SprintBootApp2-AzureWebApps/Java-Spring-Boot-HelloWorld/pom.xml'        
         goals: 'package -Dmaven.test.skip=true'  # Specify the Maven goals, e.g., clean, package, etc.
         publishJUnitResults: false  # If you don't have JUnit tests, set this to false
 
