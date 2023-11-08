@@ -109,7 +109,7 @@ stages:
         WebAppName: 'azuretestcicd76757-asp'
         #package: '$(System.DefaultWorkingDirectory)/**/*.jar'  # Adjust this path to match your JAR file
 
-        package: '$(Build.ArtifactStagingDirectory)'
+        package: '$(Build.ArtifactStagingDirectory)/*.jar'
         enableCustomDeployment: true
         TakeAppOfflineFlag: false
         RemoveAdditionalFilesFlag: false
