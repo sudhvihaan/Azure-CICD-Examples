@@ -26,44 +26,6 @@ stages:
           
 
 
-      - task: TerraformTaskV4@4
-        displayName: 'DM-Terraform Init'
-        inputs:
-          provider: 'azurerm'
-          command: 'init'
-          workingDirectory: '$(Build.SourcesDirectory)/05-CICDPL-Java-SprintBootApp2-AzureWebApps/Terraform'
-          backendServiceArm: 'Service-Connection-To-Koushik-ProjectCICD-2nd'
-          backendAzureRmResourceGroupName: 'AKS-HEMLDemo'
-          backendAzureRmStorageAccountName: 'storageac6674'
-          backendAzureRmContainerName: 'storestafefile'
-          backendAzureRmKey: 'state-2nd-JSB.tfstate'
-
-      - task: TerraformTaskV4@4
-        displayName: 'DM-Terraform Validate'
-        inputs:
-          provider: 'azurerm'
-          command: 'validate'
-          workingDirectory: '$(Build.SourcesDirectory)/05-CICDPL-Java-SprintBootApp2-AzureWebApps/Terraform'
-
-      - task: TerraformTaskV4@4
-        displayName: 'DM-Terraform Plan'
-        inputs:
-          provider: 'azurerm'
-          command: 'plan'
-          environmentServiceNameAzureRM: 'Service-Connection-To-Koushik-ProjectCICD-2nd' 
-          workingDirectory: '$(Build.SourcesDirectory)/05-CICDPL-Java-SprintBootApp2-AzureWebApps/Terraform'
-        
-
-      - task: TerraformTaskV4@4
-        displayName: 'DM-Terraform Apply'
-        inputs:
-          provider: 'azurerm'
-          command: 'apply'
-          commandOptions: '--auto-approve'
-          environmentServiceNameAzureRM: 'Service-Connection-To-Koushik-ProjectCICD-2nd'
-          workingDirectory: '$(Build.SourcesDirectory)/05-CICDPL-Java-SprintBootApp2-AzureWebApps/Terraform'
-
-
 
 - stage: Stage_CI_Build_App_Maven
   jobs:
@@ -106,7 +68,7 @@ stages:
       displayName: 'Azure App Service Deploy'
       inputs:
         azureSubscription: 'Service-Connection-To-Koushik-ProjectCICD-2nd'
-        WebAppName: 'azuretestcicd76757-asp'
+        WebAppName: 'loganalyticsaks56565'
         #package: '$(System.DefaultWorkingDirectory)/**/*.jar'  # Adjust this path to match your JAR file
 
         package: '$(Build.ArtifactStagingDirectory)/*.jar'
