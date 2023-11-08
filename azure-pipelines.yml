@@ -73,7 +73,7 @@ stages:
         WebAppName: 'azuretestcicd76757-asp'
         packageForLinux: '$(Build.ArtifactStagingDirectory)/*.jar'
         ScriptType: 'Inline Script'
-        InlineScript: 'java -jar /home/site/wwwroot/Hello-world-0.0.1-SANPSHOT.jar --server.port=8080''
+        InlineScript: 'java -jar /home/site/wwwroot/Hello-world-0.0.1-SANPSHOT.jar --server.port=8080'
 
 
 
